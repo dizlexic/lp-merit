@@ -34,8 +34,8 @@ class CandidateFactory extends Factory
             'elected_position' => $this->faker->jobTitle,
             'election_district' => $this->faker->word,
             'election_cycle' => $this->faker->word,
-            'source' => $this->faker->url,
-            'notes' => $this->faker->paragraph,
+            'source' => 'factory',
+            'note' => $this->faker->paragraph,
             'picture' =>  "https://placehold.in/400x300@2x.png/dark",
             'verified_by' => $this->faker->randomElement([null, User::factory()->create()->id]),
         ];

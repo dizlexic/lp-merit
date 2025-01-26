@@ -12,7 +12,7 @@ class CandidateSubmitController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return Inertia::render('CandidateSubmit');
+
     }
 
     public function store(Request $request)

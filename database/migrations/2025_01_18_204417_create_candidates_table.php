@@ -29,7 +29,7 @@ return new class extends Migration
             $table->string('election_district');
             $table->string('election_cycle');
             $table->string('source');
-            $table->text('notes');
+            $table->text('note')->nullable();
 
             $table->foreignUuid('verified_by')->nullable()->references('id')->on('users')->nullOnDelete();
             $table->foreignUuid('updated_by')->nullable()->references('id')->on('users')->nullOnDelete();

@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreCandidateRequest extends FormRequest
@@ -11,7 +12,13 @@ class StoreCandidateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return RateLimiter::attempt(
+            'submit-candidate:'.$this->ip(),
+            $perMinute = 5,
+            function() {
+                return true;
+            }
+        );
     }
 
     /**
@@ -22,7 +29,18 @@ class StoreCandidateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'phone' => ['required', 'string', 'max:255'],
+            'address' => ['required', 'string', 'max:255'],
+            'city' => ['required', 'string', 'max:255'],
+            'state' => ['required', 'string', 'max:255'],
+            'zip' => ['required', 'string', 'max:255'],
+            'elected_position' => ['required', 'string', 'max:255'],
+            'election_district' => ['required', 'string', 'max:255'],
+            'election_cycle' => ['required', 'string', 'max:255'],
+            'picture' => ['required', 'file', 'max:5120'],
         ];
     }
 }

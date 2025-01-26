@@ -128,6 +128,15 @@ const submit = () => {
                   variant="outlined"
                 />
               </v-col>
+              <v-col cols="6">
+                <v-text-field
+                  v-model="form.election_cycle"
+                  label="Election Cycle"
+                  :error="errors.election_cycle"
+                  density="compact"
+                  variant="outlined"
+                />
+              </v-col>
               <v-col cols="12">
                 <v-label>
                   Candidate Photo

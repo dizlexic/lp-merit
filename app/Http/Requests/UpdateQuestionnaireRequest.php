@@ -4,19 +4,13 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateCandidateRequest extends FormRequest
+class UpdateQuestionnaireRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        $user = $this->user();
-
-        if ($user->hasRole('admin') || $user->hasRole('manager')) {
-            return true;
-        }
-
         return false;
     }
 
