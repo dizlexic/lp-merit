@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Inertia\Inertia;
+use App\Models\Question;
 use App\Models\Candidate;
 use App\Http\Requests\StoreQuestionnaireRequest;
 use App\Http\Requests\UpdateQuestionnaireRequest;
@@ -24,7 +25,7 @@ class QuestionnaireController extends Controller
     public function create(Candidate $candidate)
     {
         $questions = Question::all();
-        Inertia::render('QuestionnaireCreate', compact('candidate'));
+        return Inertia::render('QuestionnaireCreate', compact('candidate', 'questions'));
     }
 
     /**

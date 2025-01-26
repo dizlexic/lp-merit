@@ -16,7 +16,7 @@ Route::get('/candidates/submit', [\App\Http\Controllers\CandidateController::cla
 Route::post('/candidates/submit', [\App\Http\Controllers\CandidateController::class, 'store'])->name('candidates.store');
 
 
-Route::get('/questionnaire/{candidate_id}', [\App\Http\Controllers\QuestionnaireController::class, 'create'])->name('questionnaire.create');
+Route::get('/questionnaire/{candidate}', [\App\Http\Controllers\QuestionnaireController::class, 'create'])->name('questionnaire.create');
 
 
 Route::middleware(['auth', 'role:admin|manager|'])->group(function () {
