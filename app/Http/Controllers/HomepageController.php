@@ -14,6 +14,7 @@ class HomepageController extends Controller
     public function __invoke(Request $request)
     {
         $recent = Candidate::query()->orderBy('created_at', 'desc')->where('verified_by', '!=', null)->limit(6)->get();
-        return Inertia::render('HomeView', compact('recent'));
+        $featured = Candidate::query()->orderBy('created_at', 'desc')->where('verified_by', '!=', null)->limit(8)->get();
+        return Inertia::render('HomeView', compact('recent', 'featured'));
     }
 }

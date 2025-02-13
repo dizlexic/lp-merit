@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SearchRequest;
 use Inertia\Inertia;
 use App\Models\User;
 use App\Models\Candidate;
@@ -12,19 +13,15 @@ class SearchController extends Controller
     /**
      * Handle the incoming request.
      */
-    public function __invoke(Request $request)
+    public function __invoke(SearchRequest $request)
     {
-        $request->validate([
-            'search' => 'string|max:255',
-        ]);
 
         $per_page = 12;
 
         $query = Candidate::query();
-        $search = $request->search;
 
-        if ($search) {
-            $query->where('name', 'like', '%'.$search.'%');
+        if ($request->validated()) {
+            $query->where('name', 'like', '%'.$request->validated()['search'].'%');
         }
 
         $results = $query->paginate($per_page)->through(function ($candidate) {
@@ -47,6 +44,10 @@ class SearchController extends Controller
             ];
         });
 
-        return Inertia::render('SearchView', compact('search', 'results'));
+        if ($request->validated()) {
+            $results->appends(['search' => $request->validated()['search']]);
+        }
+
+        return Inertia::render('SearchView', compact('results',));
     }
 }
