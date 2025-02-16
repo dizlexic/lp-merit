@@ -1,16 +1,11 @@
 <script setup>
 import NavLink from '@/components/NavLink.vue';
 import { Head, Link, router, usePage } from '@inertiajs/vue3';
-import { computed, ref } from 'vue';
+import { ref } from 'vue';
 
 const search = ref('');
-const links = usePage().props.links;
 const history = usePage().props.history;
 
-const show_search = ref(false);
-const is_privledged = computed(() => {
-    return usePage().props?.auth.roles.includes('admin');
-});
 </script>
 
 <template>

@@ -8,9 +8,6 @@ defineProps({
     mustVerifyEmail: {
         type: Boolean,
     },
-    status: {
-        type: String,
-    },
 });
 </script>
 
@@ -25,13 +22,13 @@ defineProps({
                         </v-card-title>
                         <v-card-text>
                             <v-alert
-                                v-if="status"
+                                v-if="$page.props.status"
                                 :value="true"
-                                :type="status === 'saved' ? 'success' : 'error'"
+                                :type="$page.props.status === 'saved' ? 'success' : 'error'"
                                 dismissible
                             >
                                 {{
-                                    status === 'saved'
+                                    $page.props.status === 'saved'
                                         ? 'Profile updated!'
                                         : 'There was an error updating your profile.'
                                 }}

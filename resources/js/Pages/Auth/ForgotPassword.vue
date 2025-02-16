@@ -3,12 +3,6 @@ import PrimaryButton from '@/components/PrimaryButton.vue';
 import ApplicationLayout from '@/layouts/ApplicationLayout.vue';
 import { useForm } from '@inertiajs/vue3';
 
-defineProps({
-    status: {
-        type: String,
-    },
-});
-
 const form = useForm({
     email: '',
 });
@@ -28,14 +22,11 @@ const submit = () => {
             >
                 <v-card>
                     <v-card-title>Forgot Password</v-card-title>
-
                     <v-card-text>
                         <v-expand-transition>
                             <v-alert
                                 v-if="$page.props.errors.email"
-                                :type="
-                                    status === 'success' ? 'success' : 'error'
-                                "
+                                :type="$page.props.status === 'success' ? 'success' : 'error'"
                                 dense
                                 dismissible
                                 border="left"
@@ -60,7 +51,6 @@ const submit = () => {
                                 autofocus
                                 required
                             />
-
                             <primary-button type="submit">
                                 Send Password Reset Link
                             </primary-button>

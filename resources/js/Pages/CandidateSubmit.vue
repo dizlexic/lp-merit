@@ -3,9 +3,7 @@ import ApplicationLayout from '@/layouts/ApplicationLayout.vue';
 import { useForm } from '@inertiajs/vue3';
 import { VFileUpload, VFileUploadItem } from 'vuetify/labs/VFileUpload';
 
-defineProps({
-    errors: Object,
-});
+
 const form = useForm({
     first_name: '',
     last_name: '',
@@ -40,7 +38,7 @@ const submit = () => {
                         <v-text-field
                             v-model="form.first_name"
                             label="First Name"
-                            :error="errors.first_name"
+                            :error="$page.props.errors.first_name"
                             density="compact"
                             variant="outlined"
                         />
@@ -49,7 +47,7 @@ const submit = () => {
                         <v-text-field
                             v-model="form.last_name"
                             label="Last Name"
-                            :error="errors.last_name"
+                            :error="$page.props.errors.last_name"
                             density="compact"
                             variant="outlined"
                         />
@@ -58,7 +56,7 @@ const submit = () => {
                         <v-text-field
                             v-model="form.email"
                             label="Email"
-                            :error="errors.email"
+                            :error="$page.props.errors.email"
                             density="compact"
                             variant="outlined"
                         />
@@ -67,7 +65,7 @@ const submit = () => {
                         <v-text-field
                             v-model="form.phone"
                             label="Phone"
-                            :error="errors.phone"
+                            :error="$page.props.errors.phone"
                             density="compact"
                             variant="outlined"
                         />
@@ -76,7 +74,7 @@ const submit = () => {
                         <v-text-field
                             v-model="form.address"
                             label="Address"
-                            :error="errors.address"
+                            :error="$page.props.errors.address"
                             density="compact"
                             variant="outlined"
                         />
@@ -85,7 +83,7 @@ const submit = () => {
                         <v-text-field
                             v-model="form.city"
                             label="City"
-                            :error="errors.city"
+                            :error="$page.props.errors.city"
                             density="compact"
                             variant="outlined"
                         />
@@ -94,7 +92,7 @@ const submit = () => {
                         <v-text-field
                             v-model="form.state"
                             label="State"
-                            :error="errors.state"
+                            :error="$page.props.errors.state"
                             density="compact"
                             variant="outlined"
                         />
@@ -103,7 +101,7 @@ const submit = () => {
                         <v-text-field
                             v-model="form.zip"
                             label="Zip"
-                            :error="errors.zip"
+                            :error="$page.props.errors.zip"
                             density="compact"
                             variant="outlined"
                         />
@@ -112,7 +110,7 @@ const submit = () => {
                         <v-text-field
                             v-model="form.elected_position"
                             label="Elected Position"
-                            :error="errors.elected_position"
+                            :error="$page.props.errors.elected_position"
                             density="compact"
                             variant="outlined"
                         />
@@ -121,7 +119,7 @@ const submit = () => {
                         <v-text-field
                             v-model="form.election_district"
                             label="Election District"
-                            :error="errors.election_district"
+                            :error="$page.props.errors.election_district"
                             density="compact"
                             variant="outlined"
                         />
@@ -130,7 +128,7 @@ const submit = () => {
                         <v-text-field
                             v-model="form.election_cycle"
                             label="Election Cycle"
-                            :error="errors.election_cycle"
+                            :error="$page.props.errors.election_cycle"
                             density="compact"
                             variant="outlined"
                         />
@@ -143,6 +141,7 @@ const submit = () => {
                             show-size
                             density="compact"
                             variant="outlined"
+                            :error="$page.props.errors.picture"
                         >
                             <template #item="{ props: itemProps }">
                                 <v-file-upload-item
