@@ -7,7 +7,9 @@ const selected = ref(0);
 let interval;
 const slide = ref(null);
 const autoSlide = () => {
-    selected.value = (selected.value + 1) % usePage().props.recent.length;
+    if (usePage().props.recent) {
+        selected.value = (selected.value + 1) % usePage().props.recent.length;
+    }
 };
 
 const pauseSlide = () => {
