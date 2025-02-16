@@ -18,6 +18,8 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/questionnaire/{candidate}', [\App\Http\Controllers\QuestionnaireController::class, 'update'])->name('questionnaire.update');
 });
 
+
+
 Route::middleware(['auth', 'role:admin|manager'])->group(function () {
     // is logged in
     Route::get('/dashboard', \App\Http\Controllers\Admin\DashboardController::class)->middleware(['auth', 'role:manager|author|admin'])->name('dashboard');
