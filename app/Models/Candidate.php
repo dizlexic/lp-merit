@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Candidate extends Model
 {
@@ -59,10 +59,11 @@ class Candidate extends Model
     /**
      * Set name on
      */
-    public static function boot() {
+    public static function boot()
+    {
         parent::boot();
         static::creating(function ($model) {
-            $model->name = $model->first_name . ' ' . $model->last_name;
+            $model->name = $model->first_name.' '.$model->last_name;
             $model->slug = Str::slug($model->name);
         });
     }

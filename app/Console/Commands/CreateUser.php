@@ -6,9 +6,10 @@ use App\Models\Role;
 use App\Models\User;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Hash;
-use function Laravel\Prompts\text;
-use function Laravel\Prompts\password;
+
 use function Laravel\Prompts\multiselect;
+use function Laravel\Prompts\password;
+use function Laravel\Prompts\text;
 
 class CreateUser extends Command
 {
@@ -42,7 +43,7 @@ class CreateUser extends Command
 
         $email = text(
             label: 'Email',
-            validate: fn(string $value) => match (true) {
+            validate: fn (string $value) => match (true) {
                 !filter_var($value, FILTER_VALIDATE_EMAIL) => 'The email must be a valid email address.',
                 strlen($value) > 255 => 'The email must not exceed 255 characters.',
                 default => null
@@ -52,7 +53,7 @@ class CreateUser extends Command
         $password = password(
             label: 'User password?',
             placeholder: 'password',
-            validate: fn(string $value) => match (true) {
+            validate: fn (string $value) => match (true) {
                 strlen($value) < 8 => 'The password must be at least 8 characters.',
                 default => null
             },
@@ -62,7 +63,7 @@ class CreateUser extends Command
         password(
             label: 'Confirm password',
             placeholder: 'password',
-            validate: fn(string $value) => match (true) {
+            validate: fn (string $value) => match (true) {
                 $value !== $password => 'The password confirmation does not match.',
                 default => null
             }

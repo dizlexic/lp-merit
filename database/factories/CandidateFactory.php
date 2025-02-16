@@ -21,7 +21,7 @@ class CandidateFactory extends Factory
         $lastName = $this->faker->unique()->lastName;
 
         return [
-            'name' => $firstName . ' ' . $lastName,
+            'name' => $firstName.' '.$lastName,
             'first_name' => $firstName,
             'last_name' => $lastName,
             'slug' => $this->faker->slug,
@@ -36,7 +36,7 @@ class CandidateFactory extends Factory
             'election_cycle' => $this->faker->word,
             'source' => 'factory',
             'note' => $this->faker->paragraph,
-            'picture' =>  "https://placehold.in/400x300@2x.png/dark",
+            'picture' => 'https://placehold.in/400x300@2x.png/dark',
             'verified_by' => $this->faker->randomElement([null, User::factory()->create()->id]),
         ];
     }

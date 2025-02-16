@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SearchRequest;
-use Inertia\Inertia;
-use App\Models\User;
 use App\Models\Candidate;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class SearchController extends Controller
 {
@@ -15,7 +14,6 @@ class SearchController extends Controller
      */
     public function __invoke(SearchRequest $request)
     {
-
         $per_page = 12;
 
         $query = Candidate::query();
@@ -48,6 +46,6 @@ class SearchController extends Controller
             $results->appends(['search' => $request->validated()['search']]);
         }
 
-        return Inertia::render('SearchView', compact('results',));
+        return Inertia::render('SearchView', compact('results'));
     }
 }

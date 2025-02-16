@@ -13,11 +13,7 @@ class UpdateCandidateRequest extends FormRequest
     {
         $user = $this->user();
 
-        if ($user->hasRole('admin') || $user->hasRole('manager')) {
-            return true;
-        }
-
-        return false;
+        return (bool) ($user->hasRole('admin') || $user->hasRole('manager'));
     }
 
     /**
@@ -28,7 +24,6 @@ class UpdateCandidateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
         ];
     }
 }

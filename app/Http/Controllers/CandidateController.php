@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Inertia\Inertia;
-use Inertia\Response;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\RateLimiter;
-use App\Mail\CandidateQuestionnaire;
-use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\StoreCandidateRequest;
 use App\Http\Requests\UpdateCandidateRequest;
+use App\Mail\CandidateQuestionnaire;
 use App\Models\Candidate;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Support\Facades\Storage;
+use Inertia\Inertia;
+use Inertia\Response;
 
 class CandidateController extends Controller
 {
@@ -24,6 +24,7 @@ class CandidateController extends Controller
         $slug = $request->route()->parameter('slug');
 
         $candidate = Candidate::where('slug', $slug)->firstOrFail();
+
         return Inertia::render('DetailView', compact('candidate'));
     }
 
@@ -43,7 +44,7 @@ class CandidateController extends Controller
         $executed = RateLimiter::attempt(
             'submit-candidate:'.$request->ip(),
             $perMinute = 5,
-            function() use ($request) {
+            function () use ($request) {
                 $validated = $request->validated();
                 $picture = $request->file('picture')->store('public/candidates');
                 $source = 'web';
@@ -52,7 +53,7 @@ class CandidateController extends Controller
             }
         );
 
-        if (! $executed) {
+        if (!$executed) {
             return back()->withErrors(['message' => 'Too many requests. Please try again later.']);
         }
 
@@ -89,8 +90,5 @@ class CandidateController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Candidate $candidate)
-    {
-        //
-    }
+    public function destroy(Candidate $candidate) {}
 }

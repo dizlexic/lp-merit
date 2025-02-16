@@ -1,11 +1,7 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use Illuminate\Foundation\Application;
-use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
-use App\Http\Controllers\CandidateSubmitController;
 use App\Http\Controllers\Admin\CandidateDetailController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', \App\Http\Controllers\HomepageController::class)->name('homepage');
 Route::post('/search', \App\Http\Controllers\SearchController::class)->name('search');
@@ -15,9 +11,7 @@ Route::get('/candidates/{year}/{slug}', \App\Http\Controllers\CandidateControlle
 Route::get('/candidates/submit', [\App\Http\Controllers\CandidateController::class, 'create'])->name('candidates.submit');
 Route::post('/candidates/submit', [\App\Http\Controllers\CandidateController::class, 'store'])->name('candidates.store');
 
-
 Route::get('/questionnaire/{candidate}', [\App\Http\Controllers\QuestionnaireController::class, 'create'])->name('questionnaire.create');
-
 
 Route::middleware(['auth', 'role:admin|manager|'])->group(function () {
     // is logged in

@@ -106,7 +106,7 @@
                 "method_protected",
                 "method_private"
             ],
-            "sort_algorithm": "alpha"
+            "sort_algorithm": "none"
         },
         "ordered_imports": true,
         "ordered_interfaces": true,

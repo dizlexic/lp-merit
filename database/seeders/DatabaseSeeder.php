@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
 
     protected $productionSeeders = [
         // Add production seeders here
-        RolePermissionSeeder::class
+        RolePermissionSeeder::class,
     ];
 
     /**

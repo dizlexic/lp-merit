@@ -52,7 +52,7 @@ class MakeUser extends Command
 
         $email = text(
             label: 'Email',
-            validate: fn(string $value) => match (true) {
+            validate: fn (string $value) => match (true) {
                 !filter_var($value, FILTER_VALIDATE_EMAIL) => 'The email must be a valid email address.',
                 strlen($value) > 255 => 'The email must not exceed 255 characters.',
                 default => null
@@ -61,7 +61,7 @@ class MakeUser extends Command
 
         $username = text(
             label: 'Username',
-            validate: fn(string $value) => match (true) {
+            validate: fn (string $value) => match (true) {
                 strlen($value) < 3 => 'The username must be at least 3 characters.',
                 strlen($value) > 255 => 'The username must not exceed 255 characters.',
                 default => null
@@ -71,7 +71,7 @@ class MakeUser extends Command
         $password = password(
             label: 'What is your password?',
             placeholder: 'password',
-            validate: fn(string $value) => match (true) {
+            validate: fn (string $value) => match (true) {
                 strlen($value) < 8 => 'The password must be at least 8 characters.',
                 default => null
             },

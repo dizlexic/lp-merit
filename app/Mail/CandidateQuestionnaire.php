@@ -4,7 +4,6 @@ namespace App\Mail;
 
 use App\Models\Candidate;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
@@ -19,10 +18,7 @@ class CandidateQuestionnaire extends Mailable
      */
     public function __construct(
         public Candidate $candidate,
-    )
-    {
-        //
-    }
+    ) {}
 
     /**
      * Get the message envelope.

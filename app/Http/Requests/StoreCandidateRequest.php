@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\RateLimiter;
 
 class StoreCandidateRequest extends FormRequest
 {
@@ -15,7 +15,7 @@ class StoreCandidateRequest extends FormRequest
         return RateLimiter::attempt(
             'submit-candidate:'.$this->ip(),
             $perMinute = 5,
-            function() {
+            function () {
                 return true;
             }
         );

@@ -22,7 +22,6 @@ class StoreQuestionnaireRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
         ];
     }
 }
