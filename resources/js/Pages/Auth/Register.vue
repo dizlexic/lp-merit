@@ -28,31 +28,35 @@ const submit = () => {
                         </v-card-title>
                         <v-card-text>
                             <form @submit.prevent="submit">
-                                <text-input
+                                <v-text-field
                                     v-model="form.name"
                                     label="Name"
                                     type="text"
-                                    :error="form.errors.name"
+                                    :error-messages="form.errors.name"
                                 />
-                                <text-input
+                                <v-text-field
                                     v-model="form.email"
                                     label="Email"
                                     type="email"
-                                    :error="form.errors.email"
+                                    :error-messages="form.errors.email"
                                 />
-                                <text-input
+                                <v-text-field
                                     v-model="form.password"
                                     label="Password"
                                     type="password"
-                                    :error="form.errors.password"
+                                    :rules="[
+                                        () => form.password.length >= 8 || 'Password must be at least 8 characters',
+                                    ]"
+                                    :error-messages="form.errors.password"
                                 />
-                                <text-input
+                                <v-text-field
                                     v-model="form.password_confirmation"
                                     label="Confirm Password"
                                     type="password"
-                                    :error="
-                                        form.errors.password_confirmation
-                                    "
+                                    :error-messages="form.errors.password_confirmation"
+                                    :rules="[
+                                        () => form.password === form.password_confirmation || 'Passwords do not match',
+                                    ]"
                                 />
                                 <v-btn type="submit">
                                     Register

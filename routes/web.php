@@ -20,9 +20,12 @@ Route::middleware(['auth'])->group(function () {
 
 
 
-Route::middleware(['auth', 'role:admin|manager'])->group(function () {
-    // is logged in
-    Route::get('/dashboard', \App\Http\Controllers\Admin\DashboardController::class)->middleware(['auth', 'role:manager|author|admin'])->name('dashboard');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [\App\Http\Controllers\User\DashboardController::class, 'index'])->name('dashboard');
+});
+
+Route::middleware(['role:admin|author|moderator'])->group(function () {
+    Route::get('/manage', \App\Http\Controllers\Admin\DashboardController::class)->middleware(['auth', 'role:manager|author|admin'])->name('admin.dashboard');
     Route::get('/manage/candidates/list', \App\Http\Controllers\Admin\CandidateListController::class)->name('manage.candidates.list');
     Route::get('/manage/candidates/{candidate_id}', \App\Http\Controllers\Admin\CandidateDetailController::class)->name('manage.candidates.view');
     Route::put('/manage/candidates/{candidate_id}', [CandidateDetailController::class, 'update'])->name('manage.candidates.edit');
