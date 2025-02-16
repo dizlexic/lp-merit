@@ -65,7 +65,7 @@ class CandidateController extends Controller
      */
     public function show(Candidate $candidate): Response
     {
-        Inertia::render('CandidateDetail', compact('candidate'));
+        return Inertia::render('CandidateDetail', compact('candidate'));
     }
 
     /**
