@@ -1,5 +1,6 @@
 <script setup>
 import ApplicationLayout from '@/layouts/ApplicationLayout.vue';
+import { router } from '@inertiajs/vue3';
 </script>
 
 <template>
@@ -21,6 +22,28 @@ import ApplicationLayout from '@/layouts/ApplicationLayout.vue';
                             :src="$page.props.candidate.picture"
                         />
                     </v-card-item>
+                    <template
+                        v-if="$page.props.previous"
+                        #prepend
+                    >
+                        <v-btn
+                            variant="outlined"
+                            @click="router.visit($page.props.previous)"
+                        >
+                            Previous
+                        </v-btn>
+                    </template>
+                    <template
+                        v-else
+                        #prepend
+                    >
+                        <v-btn
+                            variant="outlined"
+                            @click="router.visit(route('search'))"
+                        >
+                            Search
+                        </v-btn>
+                    </template>
                 </v-card>
             </v-col>
         </v-row>

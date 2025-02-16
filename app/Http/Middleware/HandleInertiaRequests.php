@@ -40,6 +40,7 @@ class HandleInertiaRequests extends Middleware
                 ...(new Ziggy)->toArray(),
                 'location' => $request->url(),
             ],
+            'previous' => fn () => url()->previous() !== url()->current() ? url()->previous() : null,
         ];
     }
 }
