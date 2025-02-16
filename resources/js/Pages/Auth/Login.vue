@@ -7,9 +7,6 @@ defineProps({
     canResetPassword: {
         type: Boolean,
     },
-    status: {
-        type: String,
-    },
 });
 
 const form = useForm({
@@ -62,7 +59,7 @@ const submit = () => {
                                 label="Remember me"
                             />
 
-                            <input-error :message="status" />
+                            <input-error :message="$page.props.status" />
 
                             <v-row>
                                 <v-col cols="12">

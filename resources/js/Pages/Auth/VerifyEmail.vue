@@ -1,13 +1,6 @@
 <script setup>
 import ApplicationLayout from '@/layouts/ApplicationLayout.vue';
 import { useForm } from '@inertiajs/vue3';
-import { computed } from 'vue';
-
-const props = defineProps({
-    status: {
-        type: String,
-    },
-});
 
 const form = useForm({});
 
@@ -15,9 +8,6 @@ const submit = () => {
     form.post(route('verification.send'));
 };
 
-const verificationLinkSent = computed(
-    () => props.status === 'verification-link-sent',
-);
 </script>
 
 <template>
@@ -30,7 +20,7 @@ const verificationLinkSent = computed(
                             <h3>Verify Email</h3>
                         </v-card-title>
                         <v-card-text>
-                            <div v-if="verificationLinkSent">
+                            <div v-if="$page.props.status === 'verification-link-sent'">
                                 <p>
                                     A new verification link has been sent to the
                                     email address you provided during
