@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', \App\Http\Controllers\HomepageController::class)->name('homepage');
 Route::post('/search', \App\Http\Controllers\SearchController::class)->name('search');
 Route::get('/search', \App\Http\Controllers\SearchController::class)->name('search');
-Route::get('/candidates/{year}/{slug}', \App\Http\Controllers\CandidateController::class)->name('candidates');
+Route::get('/candidates/{year}/{slug}', \App\Http\Controllers\CandidateController::class)->name('candidates.show');
 
 Route::get('/candidates/submit', [\App\Http\Controllers\CandidateController::class, 'create'])->name('candidates.submit');
 Route::post('/candidates/submit', [\App\Http\Controllers\CandidateController::class, 'store'])->name('candidates.store');

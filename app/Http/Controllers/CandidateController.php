@@ -25,7 +25,7 @@ class CandidateController extends Controller
 
         $candidate = Candidate::where('slug', $slug)->firstOrFail();
 
-        return Inertia::render('DetailView', compact('candidate'));
+        return Inertia::render('CandidateDetail', compact('candidate'));
     }
 
     /**
@@ -73,7 +73,6 @@ class CandidateController extends Controller
      */
     public function edit(Candidate $candidate)
     {
-        Inertia::render('CandidateEdit', compact('candidate'));
     }
 
     /**

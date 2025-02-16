@@ -1,6 +1,7 @@
 <script setup>
 import Pagination from '@/components/Pagination.vue';
 import ApplicationLayout from '@/layouts/ApplicationLayout.vue';
+import { router } from '@inertiajs/vue3';
 </script>
 
 <template>
@@ -33,27 +34,38 @@ import ApplicationLayout from '@/layouts/ApplicationLayout.vue';
                     md="4"
                     sm="6"
                 >
-                    <v-card>
-                        <v-card-title>{{ result.name }}</v-card-title>
-                        <v-card-subtitle>{{ result.state }}</v-card-subtitle>
-                        <v-card-item>
-                            <v-img
-                                :width="300"
-                                aspect-ratio="16/9"
-                                height="200"
-                                cover
-                                :src="result.picture"
-                            >
-                                <template #placeholder>
-                                    <v-skeleton-loader
-                                        height="200"
-                                        width="300"
-                                        type="image"
-                                    />
-                                </template>
-                            </v-img>
-                        </v-card-item>
-                    </v-card>
+                    <v-hover v-slot="{ isHovering, props }">
+                        <v-card
+                            :color="isHovering ? 'primary' : 'transparent'"
+                            v-bind="props"
+                            @click="
+                                router.visit(route('candidates.show', {
+                                    slug: result.slug,
+                                    year: result.election_year ?? new Date().getFullYear(),
+                                }));
+                            "
+                        >
+                            <v-card-title>{{ result.name }}</v-card-title>
+                            <v-card-subtitle>{{ result.state }}</v-card-subtitle>
+                            <v-card-item>
+                                <v-img
+                                    :width="300"
+                                    aspect-ratio="16/9"
+                                    height="200"
+                                    cover
+                                    :src="result.picture"
+                                >
+                                    <template #placeholder>
+                                        <v-skeleton-loader
+                                            height="200"
+                                            width="300"
+                                            type="image"
+                                        />
+                                    </template>
+                                </v-img>
+                            </v-card-item>
+                        </v-card>
+                    </v-hover>
                 </v-col>
             </template>
             <v-col cols="12">
@@ -61,7 +73,7 @@ import ApplicationLayout from '@/layouts/ApplicationLayout.vue';
                     :pagination="$page.props.results"
                     :params="{
                         search: $page.props.results.search || '',
-                        page: $page.props.results.current_page,
+                        page: $page.props.results.current_page
                     }"
                 />
             </v-col>
