@@ -13,7 +13,12 @@ Route::post('/candidates/submit', [\App\Http\Controllers\CandidateController::cl
 
 Route::get('/questionnaire/{candidate}', [\App\Http\Controllers\QuestionnaireController::class, 'create'])->name('questionnaire.create');
 
-Route::middleware(['auth', 'role:admin|manager|'])->group(function () {
+Route::middleware(['auth'])->group(function () {
+    Route::get('/questionnaire/{candidate}/edit', [\App\Http\Controllers\QuestionnaireController::class, 'edit'])->name('questionnaire.edit');
+    Route::put('/questionnaire/{candidate}', [\App\Http\Controllers\QuestionnaireController::class, 'update'])->name('questionnaire.update');
+});
+
+Route::middleware(['auth', 'role:admin|manager'])->group(function () {
     // is logged in
     Route::get('/dashboard', \App\Http\Controllers\Admin\DashboardController::class)->middleware(['auth', 'role:manager|author|admin'])->name('dashboard');
     Route::get('/manage/candidates/list', \App\Http\Controllers\Admin\CandidateListController::class)->name('manage.candidates.list');
