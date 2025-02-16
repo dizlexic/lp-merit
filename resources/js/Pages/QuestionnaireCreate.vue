@@ -1,15 +1,10 @@
 <script setup>
 import ApplicationLayout from '@/layouts/ApplicationLayout.vue';
-
-defineProps({
-    candidate: Object,
-    questions: Array,
-});
 </script>
 
 <template>
     <application-layout>
-        <v-card v-for="question in questions">
+        <v-card v-for="question in $page.props.questions" :key="question.id">
             <v-card-title>
                 {{ question.text }}
             </v-card-title>
