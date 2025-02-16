@@ -4,7 +4,10 @@ import { Link } from '@inertiajs/vue3';
 
 <template>
     <nav class="relative flex justify-center">
-        <template v-for="link in $page.props.results.links" :key="link.label">
+        <template
+            v-for="link in $page.props.results.links"
+            :key="link.label"
+        >
             <template v-if="link.label.includes('Previous')">
                 <Link
                     v-if="link.url"
@@ -14,8 +17,8 @@ import { Link } from '@inertiajs/vue3';
                     :class="{ 'bg-gray-200': link.active }"
                     :only="['results']"
                 >
-                    <v-icon v-if="link.label.includes('Previous')"
-                        >mdi-chevron-left
+                    <v-icon v-if="link.label.includes('Previous')">
+                        mdi-chevron-left
                     </v-icon>
                 </Link>
             </template>
@@ -28,9 +31,9 @@ import { Link } from '@inertiajs/vue3';
                     :class="{ 'bg-gray-200': link.active }"
                     :only="['results']"
                 >
-                    <v-icon v-if="link.label.includes('Next')"
-                        >mdi-chevron-right</v-icon
-                    >
+                    <v-icon v-if="link.label.includes('Next')">
+                        mdi-chevron-right
+                    </v-icon>
                 </Link>
             </template>
             <template v-else>

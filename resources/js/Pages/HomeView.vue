@@ -35,9 +35,9 @@ onMounted(() => {
                         @mouseleave="resumeSlide"
                     >
                         <v-slide-group-item
+                            v-for="candidate in $page.props.recent"
                             ref="slide"
                             :key="candidate.id"
-                            v-for="candidate in $page.props.recent"
                             v-slot="{ isSelected, toggle }"
                         >
                             <v-card
@@ -56,7 +56,11 @@ onMounted(() => {
                                 <v-card-subtitle
                                     class="d-sm-flex d-none justify-space-between ga-2"
                                 >
-                                    <v-btn icon size="xs" variant="text">
+                                    <v-btn
+                                        icon
+                                        size="xs"
+                                        variant="text"
+                                    >
                                         <v-icon>mdi-map</v-icon>
                                         <v-tooltip activator="parent">
                                             <span>{{ candidate.state }}</span>
@@ -78,11 +82,11 @@ onMounted(() => {
             </v-row>
             <v-row>
                 <v-col
+                    v-for="candidate in $page.props.recent"
+                    :key="candidate.id"
                     cols="12"
                     sm="6"
                     md="4"
-                    :key="candidate.id"
-                    v-for="candidate in $page.props.recent"
                 >
                     <v-card>
                         <v-card-title>
@@ -90,9 +94,9 @@ onMounted(() => {
                             {{ candidate.name }}
                         </v-card-title>
                         <v-card-subtitle>{{ candidate.state }}</v-card-subtitle>
-                        <v-card-subtitle class="text-right">{{
-                            candidate.election_district
-                        }}</v-card-subtitle>
+                        <v-card-subtitle class="text-right">
+                            {{ candidate.election_district }}
+                        </v-card-subtitle>
                     </v-card>
                 </v-col>
                 <v-btn

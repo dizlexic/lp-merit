@@ -4,7 +4,10 @@ import ApplicationLayout from '@/layouts/ApplicationLayout.vue';
 
 <template>
     <application-layout>
-        <v-card v-for="question in $page.props.questions" :key="question.id">
+        <v-card
+            v-for="question in $page.props.questions"
+            :key="question.id"
+        >
             <v-card-title>
                 {{ question.text }}
             </v-card-title>

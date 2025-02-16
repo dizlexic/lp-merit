@@ -1,9 +1,6 @@
 <script setup>
-import Checkbox from '@/components/Checkbox.vue';
-import ApplicationLayout from '@/layouts/ApplicationLayout.vue';
 import InputError from '@/components/InputError.vue';
-import PrimaryButton from '@/components/PrimaryButton.vue';
-import TextInput from '@/components/TextInput.vue';
+import ApplicationLayout from '@/layouts/ApplicationLayout.vue';
 import { useForm } from '@inertiajs/vue3';
 
 defineProps({
@@ -31,7 +28,11 @@ const submit = () => {
 <template>
     <application-layout>
         <v-row>
-            <v-col cols="12" md="6" offset-md="3">
+            <v-col
+                cols="12"
+                md="6"
+                offset-md="3"
+            >
                 <v-card>
                     <v-card-title>Login</v-card-title>
 
@@ -56,20 +57,32 @@ const submit = () => {
                                 density="compact"
                             />
 
-                            <v-checkbox v-model="form.remember" label="Remember me" />
+                            <v-checkbox
+                                v-model="form.remember"
+                                label="Remember me"
+                            />
 
                             <input-error :message="status" />
 
                             <v-row>
                                 <v-col cols="12">
-                                    <v-btn color="primary" type="submit">Login</v-btn>
+                                    <v-btn
+                                        color="primary"
+                                        type="submit"
+                                    >
+                                        Login
+                                    </v-btn>
                                 </v-col>
                             </v-row>
                         </form>
                     </v-card-text>
 
                     <v-card-actions>
-                        <v-btn variant="text" color="primary" :href="route('password.request')">
+                        <v-btn
+                            variant="text"
+                            color="primary"
+                            :href="route('password.request')"
+                        >
                             Forgot your password?
                         </v-btn>
                     </v-card-actions>

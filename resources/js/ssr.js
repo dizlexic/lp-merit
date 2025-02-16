@@ -9,23 +9,23 @@ import { ssr as vuetify } from './plugins/vuetify';
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
 createServer((page) =>
-  createInertiaApp({
-    page,
-    render: renderToString,
-    title: (title) => `${title} - ${appName}`,
-    resolve: (name) =>
-      resolvePageComponent(
-        `./Pages/${name}.vue`,
-        import.meta.glob('./Pages/**/*.vue'),
-      ),
-    setup({ App, props, plugin }) {
-      return createSSRApp({ render: () => h(App, props) })
-      .use(plugin)
-      .use(ZiggyVue, {
-        ...page.props.ziggy,
-        location: new URL(page.props.ziggy.location),
-      })
-      .use(vuetify);
-    },
-  }),
+    createInertiaApp({
+        page,
+        render: renderToString,
+        title: (title) => `${title} - ${appName}`,
+        resolve: (name) =>
+            resolvePageComponent(
+                `./Pages/${name}.vue`,
+                import.meta.glob('./Pages/**/*.vue'),
+            ),
+        setup({ App, props, plugin }) {
+            return createSSRApp({ render: () => h(App, props) })
+                .use(plugin)
+                .use(ZiggyVue, {
+                    ...page.props.ziggy,
+                    location: new URL(page.props.ziggy.location),
+                })
+                .use(vuetify);
+        },
+    }),
 );

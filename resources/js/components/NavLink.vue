@@ -1,5 +1,4 @@
 <script setup>
-import { computed } from 'vue';
 import { Link } from '@inertiajs/vue3';
 
 const props = defineProps({
@@ -11,11 +10,10 @@ const props = defineProps({
         type: Boolean,
     },
 });
-
 </script>
 
 <template>
     <Link :href="href">
-      <slot />
+        <slot />
     </Link>
 </template>

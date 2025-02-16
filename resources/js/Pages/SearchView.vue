@@ -5,7 +5,10 @@ import ApplicationLayout from '@/layouts/ApplicationLayout.vue';
 
 <template>
     <application-layout>
-        <v-alert v-if="$page.props.errors.search" type="error">
+        <v-alert
+            v-if="$page.props.errors.search"
+            type="error"
+        >
             {{ $page.props.errors.search }}
         </v-alert>
         <v-alert>
@@ -25,7 +28,11 @@ import ApplicationLayout from '@/layouts/ApplicationLayout.vue';
                 v-for="result in $page.props.results.data"
                 :key="result.id"
             >
-                <v-col cols="12" md="4" sm="6">
+                <v-col
+                    cols="12"
+                    md="4"
+                    sm="6"
+                >
                     <v-card>
                         <v-card-title>{{ result.name }}</v-card-title>
                         <v-card-subtitle>{{ result.state }}</v-card-subtitle>
