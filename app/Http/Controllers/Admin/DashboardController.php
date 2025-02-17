@@ -19,7 +19,7 @@ class DashboardController extends Controller
         $unverified = Candidate::query()->where('verified_by', null)->count();
 
         return Inertia::render(
-            'Admin/DashboardView',
+            'Manage/Dashboard',
             compact('recent', 'total', 'unverified')
         );
     }

@@ -1,5 +1,6 @@
 <script setup>
 import ApplicationLayout from '@/layouts/ApplicationLayout.vue';
+import { router } from '@inertiajs/vue3';
 </script>
 
 <template>
@@ -69,7 +70,9 @@ import ApplicationLayout from '@/layouts/ApplicationLayout.vue';
                                                     :key="candidate.id"
                                                     cols="12"
                                                 >
-                                                    <v-card>
+                                                    <v-card
+                                                        @click="router.visit(route('manage.candidate', { candidate: candidate.id }))"
+                                                    >
                                                         <v-card-title>
                                                             {{ candidate.name }}
                                                         </v-card-title>
