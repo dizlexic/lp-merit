@@ -44,27 +44,20 @@ const submit = () => {
                                 v-model="form.token"
                                 type="hidden"
                             >
-
-                            <v-label
-                                for="password"
-                                label="Password"
-                            />
                             <v-text-field
                                 id="password"
                                 v-model="form.password"
+                                label="Password"
                                 type="password"
                                 variant="outlined"
                                 density="compact"
                                 required
                             />
 
-                            <v-label
-                                for="password_confirmation"
-                                label="Confirm Password"
-                            />
                             <v-text-field
                                 id="password_confirmation"
                                 v-model="form.password_confirmation"
+                                label="Confirm Password"
                                 type="password"
                                 variant="outlined"
                                 density="compact"

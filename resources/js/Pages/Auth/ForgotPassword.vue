@@ -26,7 +26,7 @@ const submit = () => {
                         <v-expand-transition>
                             <v-alert
                                 v-if="$page.props.errors.email"
-                                :type="$page.props.status === 'success' ? 'success' : 'error'"
+                                :type="'error'"
                                 dense
                                 dismissible
                                 border="left"
@@ -36,12 +36,20 @@ const submit = () => {
                             >
                                 {{ $page.props.errors.email }}
                             </v-alert>
+                            <v-alert
+                                v-else-if="$page.props.status"
+                                :type="'success'"
+                                dense
+                                dismissible
+                                border="left"
+                                elevation="1"
+                                icon="mdi-check"
+                                variant="tonal"
+                            >
+                                {{ $page.props.status }}
+                            </v-alert>
                         </v-expand-transition>
                         <form @submit.prevent="submit">
-                            <v-label
-                                for="email"
-                                label="Email"
-                            />
                             <v-text-field
                                 id="email"
                                 v-model="form.email"
@@ -51,9 +59,12 @@ const submit = () => {
                                 autofocus
                                 required
                             />
-                            <primary-button type="submit">
+                            <v-btn
+                                type="submit"
+                                :disabled="form.processing || !form.email || $page.props.status"
+                            >
                                 Send Password Reset Link
-                            </primary-button>
+                            </v-btn>
                         </form>
                     </v-card-text>
                 </v-card>
