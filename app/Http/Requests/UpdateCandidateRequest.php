@@ -24,6 +24,23 @@ class UpdateCandidateRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'name' => 'nullable|string',
+            'email' => 'nullable|email',
+            'first_name' => 'nullable|string',
+            'last_name' => 'nullable|string',
+            'slug' => 'nullable|string',
+            'phone' => 'nullable|string',
+            'address' => 'nullable|string',
+            'city' => 'nullable|string',
+            'state' => 'nullable|string',
+            'zip' => 'nullable|string',
+            'picture' => 'nullable|string',
+            'elected_position' => 'nullable|string',
+            'election_district' => 'nullable|string',
+            'election_cycle' => 'nullable|string',
+            'source' => 'nullable|string',
+            'note' => 'nullable|string',
+            'status' => 'nullable|string|in:pending,verified,rejected',
         ];
     }
 }
