@@ -29,3 +29,7 @@ You can use the default admin account at [/login](localhost:8000/login)
  see database/seeders/DevelopmentSeeder.php for the credentials
 
 Or you can create a user with the `php artisan user:create` command
+
+## Commands
+- `php artisan user:create` - Create a new user
+- `npm run format` - Reformat the code for consistency
