@@ -25,3 +25,7 @@ The goal of this application is to provide a platform for the Libertarian Party 
 6. Run `php artisan db:seed`
 7. Run `php artisan serve`
 
+You can use the default admin account at [/login](localhost:8000/login)
+ see database/seeders/DevelopmentSeeder.php for the credentials
+
+Or you can create a user with the `php artisan user:create` command
