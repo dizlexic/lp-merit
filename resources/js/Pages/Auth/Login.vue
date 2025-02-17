@@ -1,5 +1,4 @@
 <script setup>
-import InputError from '@/components/InputError.vue';
 import ApplicationLayout from '@/layouts/ApplicationLayout.vue';
 import { useForm } from '@inertiajs/vue3';
 
@@ -43,6 +42,7 @@ const submit = () => {
                                 required
                                 variant="outlined"
                                 density="compact"
+                                :error-messages="form.errors.email"
                             />
 
                             <v-text-field
@@ -52,14 +52,14 @@ const submit = () => {
                                 required
                                 variant="outlined"
                                 density="compact"
+                                :error-messages="form.errors.password"
                             />
 
                             <v-checkbox
                                 v-model="form.remember"
                                 label="Remember me"
+                                :error-messages="form.errors.remember"
                             />
-
-                            <input-error :message="$page.props.status" />
 
                             <v-row>
                                 <v-col cols="12">
