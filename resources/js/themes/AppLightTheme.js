@@ -36,6 +36,9 @@ export const AppLightTheme = {
         'medium-emphasis': '#000000',
         disabled: '#000000',
         divider: '#000000',
+        'verified': '#4caf50',
+        'rejected': '#f44336',
+        'pending': '#ff9800',
     },
     variables: {
         'border-color': '#000000',

@@ -33,6 +33,7 @@ class Candidate extends Model
         'source',
         'note',
         'picture',
+        'status',
     ];
 
     /**
@@ -54,6 +55,8 @@ class Candidate extends Model
     protected $hidden = [
         'verified_by',
         'updated_by',
+        'created_at',
+        'updated_at',
     ];
 
     /**

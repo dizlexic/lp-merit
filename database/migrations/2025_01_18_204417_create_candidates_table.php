@@ -28,6 +28,7 @@ return new class extends Migration
             $table->string('election_district');
             $table->string('election_cycle');
             $table->string('source');
+            $table->enum('status', ['pending', 'verified', 'rejected'])->default('pending');
             $table->text('note')->nullable();
 
             $table->foreignUuid('verified_by')->nullable()->references('id')->on('users')->nullOnDelete();
