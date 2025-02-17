@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Admin\CandidateDetailController;
+use App\Http\Controllers\Admin\ManageCandidateController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', \App\Http\Controllers\HomepageController::class)->name('homepage');
@@ -22,12 +22,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [\App\Http\Controllers\User\DashboardController::class, 'index'])->name('dashboard');
 });
 
-Route::middleware(['role:admin|author|moderator'])->group(function () {
-    Route::get('/manage', \App\Http\Controllers\Admin\DashboardController::class)->middleware(['auth', 'role:manager|author|admin'])->name('admin.dashboard');
-    Route::get('/manage/candidates/list', \App\Http\Controllers\Admin\CandidateListController::class)->name('manage.candidates.list');
-    Route::get('/manage/candidates/{candidate_id}', \App\Http\Controllers\Admin\CandidateDetailController::class)->name('manage.candidates.view');
-    Route::put('/manage/candidates/{candidate_id}', [CandidateDetailController::class, 'update'])->name('manage.candidates.edit');
-    Route::delete('/manage/candidates/{candidate_id}', [CandidateDetailController::class, 'destroy'])->name('manage.candidates.delete');
+Route::middleware(['role:admin|manager'])->group(function () {
+    Route::get('/manage', \App\Http\Controllers\Admin\DashboardController::class)->name('manage.dashboard');
+    Route::get('/manage/candidates/list', \App\Http\Controllers\Admin\CandidateListController::class)->name('manage.candidates');
+    Route::get('/manage/candidates/{candidate}', \App\Http\Controllers\Admin\ManageCandidateController::class)->name('manage.candidate');
+    Route::put('/manage/candidates/{candidate}', [ManageCandidateController::class, 'update']);
+    Route::delete('/manage/candidates/{candidate}', [ManageCandidateController::class, 'destroy']);
 });
 
 require __DIR__.'/auth.php';
