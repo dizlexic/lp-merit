@@ -18,8 +18,6 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/questionnaire/{candidate}', [\App\Http\Controllers\QuestionnaireController::class, 'update'])->name('questionnaire.update');
 });
 
-
-
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [\App\Http\Controllers\User\DashboardController::class, 'index'])->name('dashboard');
 });

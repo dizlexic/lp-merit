@@ -5,7 +5,8 @@
         "build": "vite build && vite build --ssr",
         "dev": "vite",
         "lint": "eslint resources/js --ext .js,.vue --ignore-path .gitignore --fix",
-        "pint": "./vendor/bin/pint --config pint.json"
+        "pint": "./vendor/bin/pint --config pint.json",
+        "format": "npm run lint -- --fix && npm run pint"
     },
     "devDependencies": {
         "@inertiajs/vue3": "^2.0.0",
@@ -13,6 +14,7 @@
         "@tailwindcss/forms": "^0.5.3",
         "@vitejs/plugin-vue": "^5.0.0",
         "@vue/eslint-config-prettier": "^9.0.0",
+        "@vue/language-server": "^2.2.2",
         "@vue/server-renderer": "^3.4.0",
         "autoprefixer": "^10.4.12",
         "axios": "^1.7.4",
