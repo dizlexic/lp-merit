@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Candidate;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -13,6 +14,9 @@ class CandidateListController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return Inertia::render('Admin/CandidateListView');
+        $perPage = $request->input('itemsPerPage', 10);
+        $candidates = Candidate::query()->paginate($perPage > 100 ? 100 : $perPage);
+
+        return Inertia::render('Manage/CandidateList', compact('candidates'));
     }
 }
